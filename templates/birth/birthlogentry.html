@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+    {%load static%}
+    {%load bootstrap5%}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load humanize %}
+    {% load crispy_forms_tags %}
+{%block main%}
+<h1 class="text-center m-2">COLB LOGBOOK ENTRY</h1>
+<div class="container">
+
+<form method="post">
+    <hr>
+    {% csrf_token %}
+
+    <div class="row">
+        <div class="col-2">{{form.regno|as_crispy_field}}</div>
+        <div class="col-2">{{form.regdate|as_crispy_field}}</div>
+    </div>
+    <div class="row">
+        <div class="col-6">{{form.fullname|as_crispy_field}}</div>
+    </div>
+    <div class="row">
+        <div class="col-2">{{form.sex|as_crispy_field}}</div>
+        <div class="col-2">{{form.birthday|as_crispy_field}}</div>
+    </div>
+    <div class="row">
+        <div class="col-2">{{form.book|as_crispy_field}}</div>
+        <div class="col-2">{{form.page|as_crispy_field}}</div>
+    </div>
+    <div class="row">
+        <div class="col">{{form.xml|as_crispy_field}}</div>
+        <div class="col">{{form.scandocs|as_crispy_field}}</div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-2">
+                <button class="btn btn-outline-primary"><i class="fas fa-save"></i> Submit</button>
+        </div>
+    </div>
+</form>
+</div>
+{%endblock%}

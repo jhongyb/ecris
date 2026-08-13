@@ -1,0 +1,115 @@
+{%extends 'base.html'%}
+    {%load static%}
+    {%load bootstrap5%}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load humanize %}
+    {% load crispy_forms_tags %}
+{%block main%}
+<h1 class="text-center m-2">FORM 2A ENTRY</h1>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-2">
+                <label for="">Page Number</label>
+                <input type="text" class="form-control" value="{{data.page}}" name="page"> 
+            </div>
+            <div class="col-2">
+                <label for="">Book Number</label>
+                <input type="text" class="form-control" value="{{data.book}}" name="book">
+            </div>
+        </div>
+        <div class="row">
+                        <div class="col-2">
+                <label for="">Registration Number</label>
+                <input type="text" class="form-control" value="{{data.regno}}" name="regno">
+            </div>
+            <div class="col-2">
+                <label for="">Registration Date</label>
+                <input type="date" class="form-control" value="{{data.regdate|date:'Y-m-d'}}" name="regdate">
+            </div>
+            <div class="col">
+                <label for="">Name of Deceased</label>
+                <input type="text" class="form-control" value="{{data.fullname}}" name="fullname">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-1">
+                <label for="">Sex</label>
+                <input type="text" class="form-control" value="{{xml.CSexId}}" name="sex">
+            </div>
+            <div class="col-1">
+                <label for="">Age</label>
+                <input type="text" class="form-control" value="{{xml.CAgeYears}}" name="age">
+            </div>
+            <div class="col-2">
+                <label for="">Civil Status</label>
+                <input type="text" class="form-control" value="{{xml.CCivilStatusId}}" name="civilstatus">
+            </div>
+            <div class="col-2">
+                <label for="">Citizenship</label>
+                <input type="text" class="form-control" value="{{citizenship}}" name="citizenship">
+            </div>
+            <div class="col-2">
+                <label for="">Date of Death</label>
+                <input type="date" class="form-control" value="{{dateofdeath|date:'Y-m-d'}}" name="dateofdeath">
+            </div>
+            <div class="col">
+                <label for="">Place of Death</label>
+                <input type="text" class="form-control" value="{{placeofdeath}}" name="placeofdeath">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Issued to</label>
+                <input type="text" class="form-control" name="issuedto">
+            </div>
+            <div class="col">
+                <label for="">Issued Date</label>
+                <input type="date" class="form-control" name="issuedate" required>
+            </div>
+            <div class="col">
+                <label for="">Amount</label>
+                <input type="number" class="form-control" name="amount" value="0.00">
+            </div>
+            <div class="col">
+                <label for="">OR Number</label>
+                <input type="text" class="form-control" name="or">
+            </div>
+            <div class="col">
+                <label for="">OR Date</label>
+                <input type="date" class="form-control" name="ordate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label for="">Verified by</label>
+                <input type="text" class="form-control" name="verifyby">
+            </div>
+            <div class="col-3">
+                <label for="">Designation</label>
+                <input type="text" class="form-control" name="verified_position">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Remarks</label>
+                <input type="text" class="form-control" name="remarks">
+            </div>
+        </div>
+        
+        <div class="row mt-3">
+            <div class="col">
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+            </div>
+        </div>
+
+    </form>
+    {{xml}}
+<style>
+    label{margin-top: 10px;}
+</style>
+</div>
+{%endblock%}

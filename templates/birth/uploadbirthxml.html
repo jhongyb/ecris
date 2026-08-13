@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+    {%load static%}
+    {%load bootstrap5%}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load humanize %}
+{%block main%}
+<h1 class="text-center m-2">UPLOAD BIRTH PHILCRIS XML</h1>
+<div class="container m-10">
+<form method="post" enctype="multipart/form-data" accept="*.xml,*xml-bd">
+{% csrf_token %}
+<div class="row">
+    <div class="mb-5">
+        <div class="col">
+             {% bootstrap_form form %}
+        </div>
+           <div class="col">
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+           </div>
+    </div>
+</div>
+</form>
+</div>
+{%endblock%}

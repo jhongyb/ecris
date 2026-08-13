@@ -1,0 +1,42 @@
+{%extends 'base.html'%}
+    {%load static%}
+    {%load bootstrap5%}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load humanize %}
+    {% load crispy_forms_tags %}
+{%block main%}
+<h1 class="text-center m-2">MARRIAGE LOGBOOK UPDATE</h1>
+<div class="container">
+
+<form method="post", enctype="multipart/form-data">
+    <hr>
+    {% csrf_token %}
+
+    <div class="row">
+        <div class="col-2">{{form.regno|as_crispy_field}}</div>
+        <div class="col-2">{{form.regdate|as_crispy_field}}</div>
+    </div>
+    <div class="row">
+        <div class="col">{{form.husband|as_crispy_field}}</div>
+        <div class="col">{{form.wife|as_crispy_field}}</div>
+    </div>
+    <div class="row">
+        
+        <div class="col-2">{{form.dateofmarriage|as_crispy_field}}</div>
+        <div class="col-2">{{form.book|as_crispy_field}}</div>
+        <div class="col-2">{{form.page|as_crispy_field}}</div>
+    </div>
+    <div class="row">
+        <div class="col">{{form.xml|as_crispy_field}}</div>
+        <div class="col">{{form.scandocx|as_crispy_field}}</div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-2">
+                <button class="btn btn-outline-primary"><i class="fas fa-save"></i> Submit</button>
+        </div>
+    </div>
+</form>
+</div>
+{%endblock%}

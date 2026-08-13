@@ -1,0 +1,132 @@
+{%extends 'base.html'%}
+    {%load static%}
+    {%load bootstrap5%}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load humanize %}
+    {% load crispy_forms_tags %}
+{%block main%}
+<h1 class="text-center m-2">FORM 1A ENTRY</h1>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-2">
+                <label for="">Page Number</label>
+                <input type="text" class="form-control" value="{{data.page}}" name="page"> 
+            </div>
+            <div class="col-2">
+                <label for="">Book Number</label>
+                <input type="text" class="form-control" value="{{data.book}}" name="book">
+            </div>
+        </div>
+        <div class="row">
+                        <div class="col-2">
+                <label for="">Registration Number</label>
+                <input type="text" class="form-control" value="{{data.regno}}" name="regno">
+            </div>
+            <div class="col-2">
+                <label for="">Registration Date</label>
+                <input type="date" class="form-control" value="{{data.regdate|date:'Y-m-d'}}" name="regdate">
+            </div>
+            <div class="col">
+                <label for="">Child Name</label>
+                <input type="text" class="form-control" value="{{data}}" name="fullname">
+            </div>
+        </div>
+
+        <div class="row">
+                        <div class="col-2">
+                <label for="">Sex</label>
+                <input type="text" class="form-control" value="{{data.sex}}" name="sex">
+            </div>
+            <div class="col-2">
+                <label for="">Date of Birth</label>
+                <input type="date" class="form-control" value="{{data.birthday|date:'Y-m-d'}}" name="birthday">
+            </div>
+            <div class="col">
+                <label for="">Place of Birth</label>
+                <input type="text" class="form-control" value="{{bplace}}" name="bplace">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="">Mother</label>
+                <input type="text" class="form-control" value="{{mother}}" name="mother">
+            </div>
+            <div class="col">
+                <label for="">Nationality of Mother</label>
+                <input type="text" class="form-control" value="{{nm}}" name="mother_nationality">
+            </div>
+            <div class="col">
+                <label for="">Father</label>
+                <input type="text" class="form-control" value="{{father}}" name="father">
+            </div>
+            <div class="col">
+                <label for="">Nationality of Father</label>
+                <input type="text" class="form-control" value="{{nf}}" name="father_nationality">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <label for="">Date of Marriage of Parents</label>
+                <input type="date" class="form-control" name="dateofmarriage", value="{{dom|date:'Y-m-d'}}">
+            </div>
+            <div class="col">
+                <label for="">Place of Marriage of Parents</label>
+                <input type="text" class="form-control" name="placeofmarriage" value="{{pom}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Issued to</label>
+                <input type="text" class="form-control" name="issuedto">
+            </div>
+            <div class="col">
+                <label for="">Issued Date</label>
+                <input type="date" class="form-control" name="issuedate" required>
+            </div>
+            <div class="col">
+                <label for="">Amount</label>
+                <input type="number" class="form-control" name="amount" value="0.00">
+            </div>
+            <div class="col">
+                <label for="">OR Number</label>
+                <input type="text" class="form-control" name="or">
+            </div>
+            <div class="col">
+                <label for="">OR Date</label>
+                <input type="date" class="form-control" name="ordate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label for="">Verified by</label>
+                <input type="text" class="form-control" name="verifyby">
+            </div>
+            <div class="col-3">
+                <label for="">Designation</label>
+                <input type="text" class="form-control" name="verified_position">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Remarks</label>
+                <input type="text" class="form-control" name="remarks">
+            </div>
+        </div>
+        
+        <div class="row mt-3">
+            <div class="col">
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+            </div>
+        </div>
+
+    </form>
+    <!-- {{xml}} -->
+<style>
+    label{margin-top: 10px;}
+</style>
+</div>
+{%endblock%}

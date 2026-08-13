@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YB IT SOLUTIONS</title>
+    {%load static%}
+    {%load bootstrap5%}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+
+
+    <div class="container" style="padding: 20px;width: 30%;margin-top: 10%;">
+        <center><img src="{%static 'img/MCR.jpg'%}" alt="" width="150px" ></center>
+        <h1 style="text-align: center;color: teal;">{{company_name}}</h1>
+     
+        <form method="post" style="width:80%;margin: auto;margin-top: 5%;">
+            {% csrf_token%} 
+            {{form}}
+             <hr>
+             <button class="btn btn-primary" type="submit">Submit</button>
+             <button class="btn btn-success" type="reset">Reset</button>
+        </form>
+    </div>
+    <center>
+    <div class="col" style="padding: 0;margin:0">
+                {%if messages%}
+                <ul class="messages" >
+                    {%for m in messages%}
+                        <li  class="alert alert-{{message.level_tag|lower}}" role="alert" style="color: red;list-style: none    ;">{{m}}{{message.tags}}</li>
+                    {%endfor%}
+                </ul>
+                {%endif%}
+  </div>
+  </center>
+<br>
+    <p style="text-align: center;font-size: smaller;">&copy 2026 <br>
+        <img src="{%static 'img/yotta.png'%}" alt="" width="50"><br>
+    <b>YB IT SOLUTIONS </b><br>
+    Osmeña II, Bagumbayan, Sultan Kudarat
+    </p>
+</body>
+</html>

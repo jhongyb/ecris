@@ -1,0 +1,48 @@
+{%extends 'base.html'%}
+    {%load static%}
+    {%load bootstrap5%}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load humanize %}
+{%block main%}
+<h1 class="text-center m-2">FORM 1A</h1>
+<div class="container">
+
+<form method="post">
+    {% csrf_token %}
+    <div class="row mb-2">
+        <div class="col"><input type="text" class="form-control" name="txtsearch" placeholder="Search . . "></div>
+        <div class="col"><button class="btn btn-outline-primary"><i class="fas fa-search"></i> Find</button></div>
+    </div>
+</form>
+<table class="table table-hover table-bordered table-sm ">
+    <thead class="text-center">
+        <th>REG NO</th>
+        <th>REG DATE</th>
+        <th>FULLNAME </th>
+        <th>SEX</th>
+        <th>BIRTH DAY</th>
+        <th>BOOK</th>
+        <th>PAGE</th>
+        <th>ACTIONS</th>
+    </thead>
+    <tbody>
+        {%for i in data%}
+        <tr>
+            <td style="text-align: center;">{{i.birth__regno}}</td>
+            <td style="text-align: center;">{{i.birth__regdate}}</td>
+            <td>{{i.birth__fullname}}</td>
+            <td style="text-align: center;">{{i.birth__sex}}</td>
+            <td style="text-align: center;">{{i.birth__birthday}}</td>
+            <td style="text-align: center;">{{i.birth__book}}</td>
+            <td style="text-align: center;">{{i.birth__page}}</td>
+            <td style="text-align: center;">
+                <a href="{%url 'form_1a_report' pk=i.id%}" class="btn btn-sm" target="_blank"><i class="fas fa-print" style="color: gray;"></i> Preview</a>
+                <a href="{%url 'form1adelete' pk=i.id%}" class="btn btn-sm"><i class="fas fa-trash" style="color: red;"></i></a>
+            </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+</div>
+{%endblock%}

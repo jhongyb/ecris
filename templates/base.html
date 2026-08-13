@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YB IT SOLUTIONS: MCR-ESPERANZA</title>
+    {% load static %}
+    {%load bootstrap5%}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <!-- {% load humanize %} -->
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+    <link rel="ico" type="image/jpeg" href="{% static 'img/MCR.jpg' %}">
+</head>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: teal;">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="#" style="font-family: 'Arial';font-size:xx-large;">
+                <img src="{% static 'img/MCR.jpg' %}"  style="width:60px;" class="rounded-pill"> 
+                <b>ESPERANZA CIVIL REGISTRY INFORMATION SYSTEM</b>
+            </a>
+            {%if user.is_authenticated %}
+            <a class="nav-link" href="{%url 'logout'%}" style="color: white;border-radius: 20px;"> <i class="fas fa-user fa-lg"> </i> Welcome {{user}}   <i class="fas fa-sign-out fa-lg" style="margin-left: 5px;"> </i> Logout</a>
+            {%else%}
+            <a class="nav-link" href="/" style="color: aliceblue;"><i class="fas fa-user"></i> Login</a>
+            {%endif%}
+        </div>
+      </nav>
+  
+    <ul class="nav nav-tabs" >
+        <li class="nav-item dropdown">
+            <a class="nav-link active" id="navbarDropdown" href="/home" role="button"  aria-expanded="false">
+               <i class="fas fa-dashboard fa-lg"></i> Home
+            </a>
+        </li>
+
+        
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               <i class="fas fa-baby fa-lg"></i> Birth
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 300px;">
+                <li class="nav-item"><a href="{%url 'birthlist'%}"  class="nav-link"> Live Birth</a></li>
+                <li class="nav-item"><a href="{%url 'form1alist'%}"  class="nav-link"> Form 1A</a></li>
+                <hr>
+                <li class="nav-item"><a href="{%url 'uploadbirthxml'%}"  class="nav-link"> Upload Philcris XML</a></li>
+                 <li class="nav-item"><a href="{%url 'birthlogentry'%}"  class="nav-link"> Logbook Entries</a></li>
+                 <!-- <hr>
+                 <li class="nav-item"> <a href="{%url 'birthlogentry'%}"  class="nav-link"> Figure by Year</a></li> -->
+            </ul>
+        </li> 
+        <!-- <li class="nav-item"><a href=""  class="nav-link"><i class="fas fa-signal fa-lg"></i> Information & Communications</a></li> -->
+       <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               <i class="fas fa-church fa-lg"></i> Marriage
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 300px;">
+                <li class="nav-item"><a href="{%url 'marriagelist'%}"  class="nav-link"> Certificate of Marriage</a></li>
+                <li class="nav-item"><a href="{%url 'form3alist'%}"  class="nav-link"> Form 3A</a></li>
+                 <hr>
+                <li class="nav-item"><a href="{%url 'uploadmarriagexml'%}"  class="nav-link"> Upload Philcris XML</a></li>
+                <li class="nav-item"><a href="{%url 'marriagelogentry'%}"  class="nav-link"> Logbook Entries</a></li>
+            </ul>
+        </li> 
+
+<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               <i class="fas fa-skull-crossbones fa-lg"></i> Death
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 300px;">
+                <li class="nav-item"><a href="{%url 'deathlist'%}"  class="nav-link"> Certificate of Death</a></li>
+                <li class="nav-item"><a href="{%url 'form2alist'%}"  class="nav-link"> Form 2A</a></li>
+                 <hr>
+                <li class="nav-item"><a href="{%url 'uploaddeathxml'%}"  class="nav-link"> Upload Philcris XML</a></li>
+                <li class="nav-item"><a href="{%url 'deathlogentry'%}"  class="nav-link"> Logbook Entries</a></li>
+            </ul>
+        </li> 
+
+        <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               <i class="fas fa-moon fa-lg"></i>  Islam Converion
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 300px;">
+                <li class="nav-item"><a href="#"  class="nav-link"> Convertion
+                    
+                    Certificates</a></li>
+                <li class="nav-item"><a href="#"  class="nav-link"> New Certificate</a></li>
+            </ul>
+        </li> 
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               <i class="fas fa-search fa-lg"></i> Philsys Verification
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 300px;">
+                <li class="nav-item"><a href="#"  class="nav-link"> QR Code</a></li>
+                <li class="nav-item"><a href="#"  class="nav-link"> Informations</a></li>
+            </ul>
+        </li>  -->
+
+
+    </ul>
+<div>
+<center>
+<center>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning
+                    {% if message.tags == 'info' %}text-blue-800 bg-blue-50{% endif %}
+                    {% if message.tags == 'success' %}text-green-800 bg-green-50{% endif %}
+                    {% if message.tags == 'warning' %}text-yellow-800 bg-yellow-50{% endif %}
+                    {% if message.tags == 'error' %}text-red-800 bg-red-50{% endif %}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+</center>
+  </center>
+{%block main%}
+<div class="row table-reponsive m-5" style="margin: auto;">
+    <div class="col p-2" id="box">
+        <div class="row">
+            <div class="col">
+                <span>Registered Birth : </span>
+            </div>
+            <div class="col">
+                <span class="figure">{{birth_figure|intcomma}}</span>
+            </div>  
+        </div>
+        {%for i in birth_count%}
+        <div class="row">
+            <div class="col">
+                <span>{{i.sex.title}}</span>
+            </div>
+            <div class="col">
+                <span class="figure">{{i.total|intcomma}}</span>
+            </div>  
+        </div>
+        {%endfor%}
+        <hr>
+        <details>
+            <summary>Figure by year</summary>
+            <table style="width: 100%;" class="table table-hover">
+                <thead style="text-align: center;">
+                    <th>YEAR</th>
+                    <th>FIGURE</th>
+                </thead>
+                {%for i in birth_count_year%}
+                <tr>
+                    <td style="text-align: center;">{{i.year}}</td>
+                    <td style="text-align: center;">{{i.total|intcomma}}</td>
+                </tr>
+                {%endfor%}
+            </table>
+    
+    </details>
+    </div>
+
+    <div class="col p-2" id="box">
+        <div class="row">
+            <div class="col">
+                <span>Registered Marriage : </span>
+            </div>
+            <div class="col">
+                <span class="figure">{{marriage_figure|intcomma}}</span>
+            </div>  
+        </div>
+        <hr>
+        <details>
+            <summary>Figure by year</summary>
+            <table style="width: 100%;" class="table table-hover">
+                <thead style="text-align: center;">
+                    <th>YEAR</th>
+                    <th>FIGURE</th>
+                </thead>
+                {%for i in marriage_count_year%}
+                <tr>
+                    <td style="text-align: center;">{{i.year}}</td>
+                    <td style="text-align: center;">{{i.total|intcomma}}</td>
+                </tr>
+                {%endfor%}
+            </table>
+        </details>
+    </div>
+
+    <div class="col p-2" id="box">
+        <div class="row">
+            <div class="col">
+                <span>Registered Death : </span>
+            </div>
+            <div class="col">
+                <span class="figure">{{death_figure|intcomma}}</span>
+            </div>  
+        </div>
+             <hr>
+        <details>
+            <summary>Figure by year</summary>
+            <table style="width: 100%;" class="table table-hover">
+                <thead style="text-align: center;">
+                    <th >YEAR</th>
+                    <th>FIGURE</th>
+                </thead>
+                {%for i in death_count_year%}
+                <tr>
+                    <td style="text-align: center;">{{i.year}}</td>
+                    <td style="text-align: center;">{{i.total}}</td>
+                </tr>
+                {%endfor%}
+            </table>
+        </details>
+    </div>
+
+<!-- table -->
+    
+</div>
+
+<style>
+    span{font-family:fantasy;
+        font-size: x-large;
+        margin-left: 10px;
+        color: maroon;
+
+    }
+    .figure{
+        color: green;
+    }
+    #box:hover{
+        box-shadow: 5px 2px 10px 5px gray;
+        margin: 10px;
+        cursor: pointer;
+        border-radius: 10px;
+        }
+    summary{
+        font-family:fantasy;
+        color: maroon;
+    }
+</style>
+{%endblock%}
+</div>
+    
+</body>
+<style>
+    #navbarDropdown:hover, #navbarDropdown i:hover{
+        cursor: pointer;
+        background-color: brown;
+        color: white;
+    }
+  .fas{color: brown;}
+  .form-control,.form-select{background-color: rgb(254, 218, 218);}
+  h1{font-family: 'arial black';color: brown;}
+</style>
+</html>

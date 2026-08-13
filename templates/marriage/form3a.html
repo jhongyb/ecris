@@ -1,0 +1,138 @@
+{%extends 'base.html'%}
+    {%load static%}
+    {%load bootstrap5%}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load humanize %}
+    {% load crispy_forms_tags %}
+{%block main%}
+<h1 class="text-center m-2">FORM 3A ENTRY</h1>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-2">
+                <label for="">Page Number</label>
+                <input type="text" class="form-control" value="{{data.page}}" name="page">  
+            </div>
+            <div class="col-2">
+                <label for="">Book Number</label>
+                <input type="text" class="form-control" value="{{data.book}}" name="book">
+            </div>
+        </div>
+        <table class="table table-borderless">
+            <tr>
+                <th colspan="2" style="text-align: center;" >HUSBAND</th>
+                <th colspan="2" style="text-align: center;">WIFE</th>    
+            </tr>
+            <tr>
+                <td>NAME</td>
+                <td><input type="text" class="form-control" value=" {{xml.HFirstName}} {{xml.HMiddleName}} {{xml.HLastName}}" name="husband"></td>
+                <td><input type="text" class="form-control" value="{{xml.WFirstName}} {{xml.WMiddleName}} {{xml.WLastName}}" name="wife"></td>
+            </tr>
+            <tr>
+                <td>AGE</td>
+                <td><input type="text" class="form-control" value="{{xml.HAge}}" name="hage"></td>
+                <td><input type="text" class="form-control" value="{{xml.WAge}}" name="wage"></td>
+            </tr>
+                        <tr>
+                <td>SEX</td>
+                <td><input type="text" class="form-control" value="{{xml.HSexId}}" name="hsex"></td>
+                <td><input type="text" class="form-control" value="{{xml.WSexId}}" name="wsex"></td>
+            </tr>
+            <tr>
+                <td>CITIZENSHIP</td>
+                <td><input type="text" class="form-control" value="{{hc}}" name="hcitizenship"></td>
+                <td><input type="text" class="form-control" value="{{wc}}" name="wcitizenship"></td>
+            </tr>
+            <tr>
+                <td>CIVIL STATUS</td>
+                <td><input type="text" class="form-control" value="{{xml.HCivilStatusId}}" name="hstatus"></td>
+                <td><input type="text" class="form-control" value="{{xml.WCivilStatusId}}" name="wstatus"></td>
+            </tr>
+            <tr>
+                <td>NAME OF MOTHER</td>
+                <td><input type="text" class="form-control" value="{{xml.HMFirstName}} {{xml.HMMiddleName}} {{xml.HMLastName}}" name="hmother"></td>
+                <td><input type="text" class="form-control" value="{{xml.WMFirstName}} {{xml.WMMiddleName}} {{xml.WMLastName}}" name="wmother"></td>
+            </tr>
+                        <tr>
+            <td>NAME OF FATHER</td>
+                <td><input type="text" class="form-control" value="{{xml.HFFirstName}} {{xml.HFMiddleName}} {{xml.HFMLastName}}" name="hfather"></td>
+                <td><input type="text" class="form-control" value="{{xml.WFFirstName}} {{xml.WFMiddleName}} {{xml.WFLastName}}" name="wfather"></td>
+            </tr>
+
+        </table>
+        <div class="row">
+           <div class="col">
+                <label for="">Registry Number</label>
+                <input type="text" class="form-control" name="regno" value="{{xml.RegistryNum}}">
+           </div>
+           <div class="col">
+                <label for="">Date of Registration</label>
+                <input type="date" class="form-control" name="regdate" value="{{datereg|date:'Y-m-d'}}">
+           </div>
+           <div class="col">
+                <label for="">Date of Marriage</label>
+                <input type="date" class="form-control" name="dateofmarriage" value="{{dom|date:'Y-m-d'}}">
+           </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Place of Marriage</label>
+                <input type="text" class="form-control" name="placeofmarriage" value="{{xml.MarriagePlaceAddress}}, {{placeofmarriage}}
+                ">
+            </div>
+        </div>
+
+          <div class="row">
+            <div class="col">
+                <label for="">Issued to</label>
+                <input type="text" class="form-control" name="issuedto" value="">
+            </div>
+            <div class="col">
+                <label for="">Issued Date</label>
+                <input type="date" class="form-control" name="issuedate" required>
+            </div>
+            <div class="col">
+                <label for="">Amount</label>
+                <input type="number" class="form-control" name="amount" value="0.00">
+            </div>
+            <div class="col">
+                <label for="">OR Number</label>
+                <input type="text" class="form-control" name="or">
+            </div>
+            <div class="col">
+                <label for="">OR Date</label>
+                <input type="date" class="form-control" name="ordate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label for="">Verified by</label>
+                <input type="text" class="form-control" name="verifyby">
+            </div>
+            <div class="col-3">
+                <label for="">Designation</label>
+                <input type="text" class="form-control" name="verified_position">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">Remarks</label>
+                <input type="text" class="form-control" name="remarks">
+            </div>
+        </div>
+        
+        <div class="row mt-3">
+            <div class="col">
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+            </div>
+        </div>
+
+    </form>
+
+<style>
+    label{margin-top: 10px;}
+</style>
+</div>
+{%endblock%}

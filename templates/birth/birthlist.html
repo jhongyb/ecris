@@ -1,0 +1,53 @@
+{%extends 'base.html'%}
+    {%load static%}
+    {%load bootstrap5%}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load humanize %}
+{%block main%}
+<h1 class="text-center m-2">CERTIFICATE OF LIVE BIRTH</h1>
+<div class="table-reponsive p-3">
+
+<form method="post">
+    {% csrf_token %}
+    <div class="row mb-2">
+        <div class="col"><input type="text" class="form-control" name="txtsearch" placeholder="Search . . "></div>
+        <div class="col"><button class="btn btn-outline-primary"><i class="fas fa-search"></i> Find</button></div>
+    </div>
+</form>
+<table class="table table-hover table-bordered table-sm ">
+    <thead class="text-center">
+        <th>REG NO</th>
+        <th>REG DATE</th>
+        <th>FULLNAME </th>
+        <th>SEX</th>
+        <th>BIRTH DAY</th>
+        <th>BOOK</th>
+        <th>PAGE</th>
+        <th>XML</th>
+        <th>DOCX</th>
+        <th>ACTIONS</th>
+    </thead>
+    <tbody>
+        {%for i in data%}
+        <tr>
+            <td style="text-align: center;">{{i.regno}}</td>
+            <td style="text-align: center;">{{i.regdate}}</td>
+            <td>{{i.fullname}}</td>
+            <td style="text-align: center;">{{i.sex}}</td>
+            <td style="text-align: center;">{{i.birthday}}</td>
+            <td style="text-align: center;">{{i.book}}</td>
+            <td style="text-align: center;">{{i.page}}</td>
+            <td style="text-align: center;">{% if i.xml%} <i class="fas fa-file-code" style="color: green;"></i>{%else%} <i class="fas fa-smile" style="color: gold;"></i> {%endif%} </td>
+            <td style="text-align: center;">{% if i.scandocs%} <a href="{{i.scandocs.url}}" target="_blank"><i class="fas fa-file-pdf" style="color: green;"></a></i>{%else%} <i class="fas fa-smile" style="color: gold;"></i> {%endif%} </td>
+            <td style="text-align: center;">
+                <a href="{%url 'birthlogupdate' pk=i.id%}" class="btn btn-sm"><i class="fas fa-pen" style="color: green;"></i></a>
+                <a href="{%url 'birthlogdelete' pk=i.id%}" class="btn btn-sm"><i class="fas fa-trash" style="color: red;"></i></a>
+                <a href="{%url 'form1a' pk=i.id%}" class="btn btn-sm"><i class="fas" style="color: red;">1a</i></a>
+            </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+</div>
+{%endblock%}
