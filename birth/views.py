@@ -106,6 +106,13 @@ def birthlist(request):
 @login_required()
 def birthlogentry(request):
     form=BirthEntry()
+    if request.method=='POST':
+        data=BirthEntry(request.POST,request.FILES)
+        if data.is_valid():
+            data.save()
+            messages.success(request,'Data Successfully Save!')
+        else:
+            messages.error(request,'Something Error!')
     return  render(request,'birth/birthlogentry.html',{'form':form})
 
 @login_required()

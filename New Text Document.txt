@@ -1,5 +1,8 @@
 user: mcro
 password : mcro@321
 
-
 postgres: mcroesperanza
+
+python manage.py dbshell
+pg_dump -H localhost -U postgres -d postgres -F c -b -v -f backup.dump
+pg_restore -H localhost -U postgres -d postgres-v my_django_dump.dump
